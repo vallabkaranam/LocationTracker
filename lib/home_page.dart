@@ -59,6 +59,8 @@ class _HomePageState extends State<HomePage> {
   }
 
   _getCurrentLocation() {
+    // This was a preliminary function used when building the app. 
+    // Now this is developed into getPos().
     final Geolocator geolocator = Geolocator();
 
     geolocator
@@ -130,7 +132,6 @@ class _HomePageState extends State<HomePage> {
       'Timestamp': mylist[2]
     });
     print(ref.documentID);
-    //counter++;
   }
 
   readFile() {
