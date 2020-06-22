@@ -15,7 +15,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   Position _currentPosition;
   String currentPath;
-  int timer = 5;
+  int timer = 5; // T can be changed
   int counter = 0;
   final databaseReference = Firestore.instance;
 
@@ -59,7 +59,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   _getCurrentLocation() {
-    final Geolocator geolocator = Geolocator()..forceAndroidLocationManager;
+    final Geolocator geolocator = Geolocator();
 
     geolocator
         .getCurrentPosition(desiredAccuracy: LocationAccuracy.high)
@@ -102,12 +102,13 @@ class _HomePageState extends State<HomePage> {
   Future<File> writePos(Position position) async {
     final file = await _localFile;
 
-    // Write the file.
     return file.writeAsString('$position, ${DateTime.now()}\n',
         mode: FileMode.append);
   }
 
-  Future<void> _uploadFile() async {
+  Future<void> _uploadFile() async { 
+    // this function is not used anywhere at the moment, but you can upload the txt file to 
+    // fire storage just in case as a backup storage container. 
     StorageReference storageReference;
 
     storageReference = FirebaseStorage.instance.ref().child("location.txt");
